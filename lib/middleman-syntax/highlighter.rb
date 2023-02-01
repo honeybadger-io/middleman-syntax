@@ -30,11 +30,13 @@ module Middleman
           #     ~/.asdf/installs/ruby/2.7.2/lib/ruby/gems/2.7.0/gems/rouge-3.30.0/lib/rouge/lexers/escape.rb:44:in `block in stream_tokens'
           raw_lexer.reset!
 
+          escape_options = options[:escape].is_a?(Hash) ? options[:escape] : {}
+
           # See https://github.com/rouge-ruby/rouge/pull/1152
           Rouge::Formatter.enable_escape!
           lexer = Rouge::Lexers::Escape.new(
-            start: "<!",
-            end: "!>",
+            start: escape_options.fetch(:start, "<!"),
+            end: escape_options.fetch(:end, "!>"),
             lang: raw_lexer
           )
         else
