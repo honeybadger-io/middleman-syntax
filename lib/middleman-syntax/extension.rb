@@ -8,6 +8,7 @@ module Middleman
   module Syntax
     class SyntaxExtension < Extension
       option :css_class, 'highlight', 'Class name applied to the syntax-highlighted output.'
+      option :escape, false, 'Allow escaping in code blocks using "<! … !>". WARNING: Can be a security risk if you don’t control the input. See https://github.com/rouge-ruby/rouge/pull/1152 for details.'
       option :line_numbers, false, 'Generate line numbers.'
       option :line_numbers_div, false, 'Generate line numbers with wrapping divs.'
       option :start_line, 1, 'Start the line numbering (if enabled) at the desired integer'
